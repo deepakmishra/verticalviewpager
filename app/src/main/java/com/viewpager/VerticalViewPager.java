@@ -78,7 +78,7 @@ public class VerticalViewPager extends ViewPager {
 
         try {
             Class cls = this.getClass().getSuperclass();
-            Field minHeightWidthRatioField = cls.getDeclaredField("minHeightWidthRatioForIntercept");
+            Field minHeightWidthRatioField = cls.getDeclaredField("minYXRatioForIntercept");
             minHeightWidthRatioField.setAccessible(true);
             minHeightWidthRatioField.setFloat(this, minHeightWidthRatioField.getFloat(this) * 8);
         } catch (NoSuchFieldException e) {
@@ -89,7 +89,7 @@ public class VerticalViewPager extends ViewPager {
 
         try {
             Class cls = this.getClass().getSuperclass();
-            Field minHeightWidthRatioField = cls.getDeclaredField("minHeightWidthRatioForTouch");
+            Field minHeightWidthRatioField = cls.getDeclaredField("minYXRatioForTouch");
             minHeightWidthRatioField.setAccessible(true);
             minHeightWidthRatioField.setInt(this, minHeightWidthRatioField.getInt(this) * 4);
         } catch (NoSuchFieldException e) {

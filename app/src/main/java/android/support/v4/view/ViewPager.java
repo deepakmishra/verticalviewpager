@@ -231,8 +231,8 @@ public class ViewPager extends ViewGroup {
         }
     };
 
-    private float minHeightWidthRatioForIntercept = 0.5f;
-    private int minHeightWidthRatioForTouch = 1;
+    private float minYXRatioForIntercept = 0.5f;
+    private int minYXRatioForTouch = 1;
 
     public ViewPager(Context context) {
         super(context);
@@ -1872,7 +1872,7 @@ public class ViewPager extends ViewGroup {
                     mIsUnableToDrag = true;
                     return false;
                 }
-                if (xDiff > mTouchSlop && xDiff * minHeightWidthRatioForIntercept > yDiff) {
+                if (xDiff > mTouchSlop && xDiff * minYXRatioForIntercept > yDiff) {
                     if (DEBUG) Log.v(TAG, "Starting drag!");
                     mIsBeingDragged = true;
                     requestParentDisallowInterceptTouchEvent(true);
@@ -2005,7 +2005,7 @@ public class ViewPager extends ViewGroup {
                     if (DEBUG) {
                         Log.v(TAG, "Moved x to " + x + "," + y + " diff=" + xDiff + "," + yDiff);
                     }
-                    if (xDiff > mTouchSlop && xDiff * minHeightWidthRatioForTouch > yDiff) {
+                    if (xDiff > mTouchSlop && xDiff * minYXRatioForTouch > yDiff) {
                         if (DEBUG) Log.v(TAG, "Starting drag!");
                         mIsBeingDragged = true;
                         requestParentDisallowInterceptTouchEvent(true);
