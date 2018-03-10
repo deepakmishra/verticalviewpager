@@ -11,7 +11,7 @@ import java.lang.reflect.Field;
 
 
 /**
- * Created by Ajay Sharma on 10/16/2017.
+ * Created by Deepak Mishra on 10/16/2017.
  */
 
 public class VerticalViewPager extends ViewPager {
