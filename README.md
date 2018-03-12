@@ -12,6 +12,8 @@ dependencies {
 ```
 Now copy the files from the [android/support/v4](https://github.com/deepakmishra/verticalviewpager/blob/2adf04aa2728bbaf3368539ae4f3b1d840f98f27/app/src/main/java/android/support/v4) folder of **support-core-ui v26.1.0** in this projects java folder and add them to you personal project's java folder. This should be done to supplement the code that was excluded above.
 
+Also copy the [VerticalViewPager](https://github.com/deepakmishra/verticalviewpager/blob/2adf04aa2728bbaf3368539ae4f3b1d840f98f27/app/src/main/java/com/viewpager/VerticalViewPager.java) file from this project's [com/viewpager](https://github.com/deepakmishra/verticalviewpager/blob/2adf04aa2728bbaf3368539ae4f3b1d840f98f27/app/src/main/java/com/viewpager/VerticalViewPager.java) folder and add it to your project.
+
 While adding a ViewPager to your layout xml file, add the new VerticalViewPager that you included from this project instead of the default Android ViewPager, like this :
 ```
 <com.viewpager.VerticalViewPager
@@ -33,3 +35,9 @@ Similarly, in the onTouchEvent method, the instance variable [minYXRatioForTouch
 
 In the [VerticalViewPager](https://github.com/deepakmishra/verticalviewpager/blob/2adf04aa2728bbaf3368539ae4f3b1d840f98f27/app/src/main/java/com/viewpager/VerticalViewPager.java) file in this project, we swap the values of x and y in the [onInterceptTouchEvent](https://github.com/deepakmishra/verticalviewpager/blob/2adf04aa2728bbaf3368539ae4f3b1d840f98f27/app/src/main/java/com/viewpager/VerticalViewPager.java#L121) and [onTouchEvent](https://github.com/deepakmishra/verticalviewpager/blob/2adf04aa2728bbaf3368539ae4f3b1d840f98f27/app/src/main/java/com/viewpager/VerticalViewPager.java#L128) methods, and edit the required values through reflection in the [init](https://github.com/deepakmishra/verticalviewpager/blob/2adf04aa2728bbaf3368539ae4f3b1d840f98f27/app/src/main/java/com/viewpager/VerticalViewPager.java#L29) method.
 
+## Contributors
+Deepak Mishra
+* deepak@awesummly.com
+
+Denver Braganza
+* denver@awesummly.com
