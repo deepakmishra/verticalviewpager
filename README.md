@@ -1,4 +1,6 @@
 # VerticalViewPager
+![Scroll Preview](https://i.imgur.com/dhc4P1a.gif)
+
 This is a VerticalViewPager implementation for Android. It extends the default Android ViewPager to support very smooth vertical scrolling instead of horizontal scrolling. To implement this the inbuilt ViewPager should be excluded from your project.
 
 ## Implementation
