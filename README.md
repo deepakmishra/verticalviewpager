@@ -12,7 +12,7 @@ dependencies {
 	}
 }
 ```
-Now copy the files from the [android/support/v4](https://github.com/deepakmishra/verticalviewpager/blob/2adf04aa2728bbaf3368539ae4f3b1d840f98f27/app/src/main/java/android/support/v4) folder of **support-core-ui v26.1.0** in this projects java folder and add them to you personal project's java folder. This should be done to supplement the code that was excluded above.
+Now copy the files from the [android/support/v4](https://github.com/deepakmishra/verticalviewpager/blob/2adf04aa2728bbaf3368539ae4f3b1d840f98f27/app/src/main/java/android/support/v4) folder of **support-core-ui v27.1.1** in this projects java folder and add them to you personal project's java folder. This should be done to supplement the code that was excluded above.
 
 Also copy the [VerticalViewPager](https://github.com/deepakmishra/verticalviewpager/blob/2adf04aa2728bbaf3368539ae4f3b1d840f98f27/app/src/main/java/com/viewpager/VerticalViewPager.java) file from this project's [com/viewpager](https://github.com/deepakmishra/verticalviewpager/blob/2adf04aa2728bbaf3368539ae4f3b1d840f98f27/app/src/main/java/com/viewpager/VerticalViewPager.java) folder and add it to your project.
 
