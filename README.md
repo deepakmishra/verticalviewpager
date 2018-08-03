@@ -3,6 +3,8 @@
 
 This is a VerticalViewPager implementation for Android. It extends the default Android ViewPager to support very smooth vertical scrolling instead of horizontal scrolling. To implement this the inbuilt ViewPager should be excluded from your project.
 
+Note: The master branch follows v26.1.0. For v27.1.1, go to branch version27.
+
 ## Implementation
 Add the following lines inside the dependencies part of your build.gradle file to exclude the default Android ViewPager from your project
 ```
