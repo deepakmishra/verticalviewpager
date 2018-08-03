@@ -19,6 +19,8 @@ package android.support.v4.view;
 import android.database.DataSetObservable;
 import android.database.DataSetObserver;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -92,7 +94,7 @@ public abstract class PagerAdapter {
      * @param container The containing View which is displaying this adapter's
      * page views.
      */
-    public void startUpdate(ViewGroup container) {
+    public void startUpdate(@NonNull ViewGroup container) {
         startUpdate((View) container);
     }
 
@@ -107,7 +109,8 @@ public abstract class PagerAdapter {
      * @return Returns an Object representing the new page.  This does not
      * need to be a View, but can be some other container of the page.
      */
-    public Object instantiateItem(ViewGroup container, int position) {
+    @NonNull
+    public Object instantiateItem(@NonNull ViewGroup container, int position) {
         return instantiateItem((View) container, position);
     }
 
@@ -121,20 +124,21 @@ public abstract class PagerAdapter {
      * @param object The same object that was returned by
      * {@link #instantiateItem(View, int)}.
      */
-    public void destroyItem(ViewGroup container, int position, Object object) {
+    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         destroyItem((View) container, position, object);
     }
 
     /**
      * Called to inform the adapter of which item is currently considered to
      * be the "primary", that is the one show to the user as the current page.
+     * This method will not be invoked when the adapter contains no items.
      *
      * @param container The containing View from which the page will be removed.
      * @param position The page position that is now the primary.
      * @param object The same object that was returned by
      * {@link #instantiateItem(View, int)}.
      */
-    public void setPrimaryItem(ViewGroup container, int position, Object object) {
+    public void setPrimaryItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         setPrimaryItem((View) container, position, object);
     }
 
@@ -145,7 +149,7 @@ public abstract class PagerAdapter {
      * @param container The containing View which is displaying this adapter's
      * page views.
      */
-    public void finishUpdate(ViewGroup container) {
+    public void finishUpdate(@NonNull ViewGroup container) {
         finishUpdate((View) container);
     }
 
@@ -157,7 +161,7 @@ public abstract class PagerAdapter {
      * @deprecated Use {@link #startUpdate(ViewGroup)}
      */
     @Deprecated
-    public void startUpdate(View container) {
+    public void startUpdate(@NonNull View container) {
     }
 
     /**
@@ -174,7 +178,8 @@ public abstract class PagerAdapter {
      * @deprecated Use {@link #instantiateItem(ViewGroup, int)}
      */
     @Deprecated
-    public Object instantiateItem(View container, int position) {
+    @NonNull
+    public Object instantiateItem(@NonNull View container, int position) {
         throw new UnsupportedOperationException(
                 "Required method instantiateItem was not overridden");
     }
@@ -192,7 +197,7 @@ public abstract class PagerAdapter {
      * @deprecated Use {@link #destroyItem(ViewGroup, int, Object)}
      */
     @Deprecated
-    public void destroyItem(View container, int position, Object object) {
+    public void destroyItem(@NonNull View container, int position, @NonNull Object object) {
         throw new UnsupportedOperationException("Required method destroyItem was not overridden");
     }
 
@@ -208,7 +213,7 @@ public abstract class PagerAdapter {
      * @deprecated Use {@link #setPrimaryItem(ViewGroup, int, Object)}
      */
     @Deprecated
-    public void setPrimaryItem(View container, int position, Object object) {
+    public void setPrimaryItem(@NonNull View container, int position, @NonNull Object object) {
     }
 
     /**
@@ -221,7 +226,7 @@ public abstract class PagerAdapter {
      * @deprecated Use {@link #finishUpdate(ViewGroup)}
      */
     @Deprecated
-    public void finishUpdate(View container) {
+    public void finishUpdate(@NonNull View container) {
     }
 
     /**
@@ -233,7 +238,7 @@ public abstract class PagerAdapter {
      * @param object Object to check for association with <code>view</code>
      * @return true if <code>view</code> is associated with the key object <code>object</code>
      */
-    public abstract boolean isViewFromObject(View view, Object object);
+    public abstract boolean isViewFromObject(@NonNull View view, @NonNull Object object);
 
     /**
      * Save any instance state associated with this adapter and its pages that should be
@@ -241,6 +246,7 @@ public abstract class PagerAdapter {
      *
      * @return Saved state for this adapter
      */
+    @Nullable
     public Parcelable saveState() {
         return null;
     }
@@ -252,7 +258,7 @@ public abstract class PagerAdapter {
      * @param state State previously saved by a call to {@link #saveState()}
      * @param loader A ClassLoader that should be used to instantiate any restored objects
      */
-    public void restoreState(Parcelable state, ClassLoader loader) {
+    public void restoreState(@Nullable Parcelable state, @Nullable ClassLoader loader) {
     }
 
     /**
@@ -270,7 +276,7 @@ public abstract class PagerAdapter {
      *         {@link #POSITION_UNCHANGED} if the object's position has not changed,
      *         or {@link #POSITION_NONE} if the item is no longer present.
      */
-    public int getItemPosition(Object object) {
+    public int getItemPosition(@NonNull Object object) {
         return POSITION_UNCHANGED;
     }
 
@@ -292,7 +298,7 @@ public abstract class PagerAdapter {
      *
      * @param observer The {@link DataSetObserver} which will receive callbacks.
      */
-    public void registerDataSetObserver(DataSetObserver observer) {
+    public void registerDataSetObserver(@NonNull DataSetObserver observer) {
         mObservable.registerObserver(observer);
     }
 
@@ -301,7 +307,7 @@ public abstract class PagerAdapter {
      *
      * @param observer The {@link DataSetObserver} which will be unregistered.
      */
-    public void unregisterDataSetObserver(DataSetObserver observer) {
+    public void unregisterDataSetObserver(@NonNull DataSetObserver observer) {
         mObservable.unregisterObserver(observer);
     }
 
@@ -320,6 +326,7 @@ public abstract class PagerAdapter {
      * @param position The position of the title requested
      * @return A title for the requested page
      */
+    @Nullable
     public CharSequence getPageTitle(int position) {
         return null;
     }

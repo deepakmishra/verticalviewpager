@@ -42,7 +42,6 @@ import android.support.v4.view.AbsSavedState;
 import android.support.v4.view.AccessibilityDelegateCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewGroupCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat.AccessibilityActionCompat;
 import android.util.AttributeSet;
@@ -248,7 +247,7 @@ public class DrawerLayout extends ViewGroup {
          * @param drawerView The child view that was moved
          * @param slideOffset The new offset of this drawer within its range, from 0-1
          */
-        void onDrawerSlide(View drawerView, float slideOffset);
+        void onDrawerSlide(@NonNull View drawerView, float slideOffset);
 
         /**
          * Called when a drawer has settled in a completely open state.
@@ -256,14 +255,14 @@ public class DrawerLayout extends ViewGroup {
          *
          * @param drawerView Drawer view that is now open
          */
-        void onDrawerOpened(View drawerView);
+        void onDrawerOpened(@NonNull View drawerView);
 
         /**
          * Called when a drawer has settled in a completely closed state.
          *
          * @param drawerView Drawer view that is now closed
          */
-        void onDrawerClosed(View drawerView);
+        void onDrawerClosed(@NonNull View drawerView);
 
         /**
          * Called when the drawer motion state changes. The new state will
@@ -296,15 +295,15 @@ public class DrawerLayout extends ViewGroup {
         }
     }
 
-    public DrawerLayout(Context context) {
+    public DrawerLayout(@NonNull Context context) {
         this(context, null);
     }
 
-    public DrawerLayout(Context context, AttributeSet attrs) {
+    public DrawerLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public DrawerLayout(Context context, AttributeSet attrs, int defStyle) {
+    public DrawerLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
         final float density = getResources().getDisplayMetrics().density;
@@ -331,7 +330,7 @@ public class DrawerLayout extends ViewGroup {
                 ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_YES);
 
         ViewCompat.setAccessibilityDelegate(this, new AccessibilityDelegate());
-        ViewGroupCompat.setMotionEventSplittingEnabled(this, false);
+        setMotionEventSplittingEnabled(false);
         if (ViewCompat.getFitsSystemWindows(this)) {
             if (Build.VERSION.SDK_INT >= 21) {
                 setOnApplyWindowInsetsListener(new OnApplyWindowInsetsListener() {
@@ -626,7 +625,7 @@ public class DrawerLayout extends ViewGroup {
      * @see #LOCK_MODE_LOCKED_CLOSED
      * @see #LOCK_MODE_LOCKED_OPEN
      */
-    public void setDrawerLockMode(@LockMode int lockMode, View drawerView) {
+    public void setDrawerLockMode(@LockMode int lockMode, @NonNull View drawerView) {
         if (!isDrawerView(drawerView)) {
             throw new IllegalArgumentException("View " + drawerView + " is not a "
                     + "drawer with appropriate layout_gravity");
@@ -700,7 +699,7 @@ public class DrawerLayout extends ViewGroup {
      *         {@link #LOCK_MODE_LOCKED_OPEN}.
      */
     @LockMode
-    public int getDrawerLockMode(View drawerView) {
+    public int getDrawerLockMode(@NonNull View drawerView) {
         if (!isDrawerView(drawerView)) {
             throw new IllegalArgumentException("View " + drawerView + " is not a drawer");
         }
@@ -718,7 +717,7 @@ public class DrawerLayout extends ViewGroup {
      *            drawer to set the title for.
      * @param title The title for the drawer.
      */
-    public void setDrawerTitle(@EdgeGravity int edgeGravity, CharSequence title) {
+    public void setDrawerTitle(@EdgeGravity int edgeGravity, @Nullable CharSequence title) {
         final int absGravity = GravityCompat.getAbsoluteGravity(
                 edgeGravity, ViewCompat.getLayoutDirection(this));
         if (absGravity == Gravity.LEFT) {
@@ -1276,7 +1275,7 @@ public class DrawerLayout extends ViewGroup {
      *
      * @param bg Background drawable to draw behind the status bar
      */
-    public void setStatusBarBackground(Drawable bg) {
+    public void setStatusBarBackground(@Nullable Drawable bg) {
         mStatusBarBackground = bg;
         invalidate();
     }
@@ -1286,6 +1285,7 @@ public class DrawerLayout extends ViewGroup {
      *
      * @return The status bar background drawable, or null if none set
      */
+    @Nullable
     public Drawable getStatusBarBackgroundDrawable() {
         return mStatusBarBackground;
     }
@@ -1577,7 +1577,7 @@ public class DrawerLayout extends ViewGroup {
      *
      * @param drawerView Drawer view to open
      */
-    public void openDrawer(View drawerView) {
+    public void openDrawer(@NonNull View drawerView) {
         openDrawer(drawerView, true);
     }
 
@@ -1587,7 +1587,7 @@ public class DrawerLayout extends ViewGroup {
      * @param drawerView Drawer view to open
      * @param animate Whether opening of the drawer should be animated.
      */
-    public void openDrawer(View drawerView, boolean animate) {
+    public void openDrawer(@NonNull View drawerView, boolean animate) {
         if (!isDrawerView(drawerView)) {
             throw new IllegalArgumentException("View " + drawerView + " is not a sliding drawer");
         }
@@ -1646,7 +1646,7 @@ public class DrawerLayout extends ViewGroup {
      *
      * @param drawerView Drawer view to close
      */
-    public void closeDrawer(View drawerView) {
+    public void closeDrawer(@NonNull View drawerView) {
         closeDrawer(drawerView, true);
     }
 
@@ -1656,7 +1656,7 @@ public class DrawerLayout extends ViewGroup {
      * @param drawerView Drawer view to close
      * @param animate Whether closing of the drawer should be animated.
      */
-    public void closeDrawer(View drawerView, boolean animate) {
+    public void closeDrawer(@NonNull View drawerView, boolean animate) {
         if (!isDrawerView(drawerView)) {
             throw new IllegalArgumentException("View " + drawerView + " is not a sliding drawer");
         }
@@ -1718,7 +1718,7 @@ public class DrawerLayout extends ViewGroup {
      * @return true if the given drawer view is in an open state
      * @see #isDrawerVisible(View)
      */
-    public boolean isDrawerOpen(View drawer) {
+    public boolean isDrawerOpen(@NonNull View drawer) {
         if (!isDrawerView(drawer)) {
             throw new IllegalArgumentException("View " + drawer + " is not a drawer");
         }
@@ -1751,7 +1751,7 @@ public class DrawerLayout extends ViewGroup {
      * @return true if the given drawer is visible on-screen
      * @see #isDrawerOpen(View)
      */
-    public boolean isDrawerVisible(View drawer) {
+    public boolean isDrawerVisible(@NonNull View drawer) {
         if (!isDrawerView(drawer)) {
             throw new IllegalArgumentException("View " + drawer + " is not a drawer");
         }
@@ -2001,7 +2001,7 @@ public class DrawerLayout extends ViewGroup {
         @LockMode int lockModeStart;
         @LockMode int lockModeEnd;
 
-        public SavedState(Parcel in, ClassLoader loader) {
+        public SavedState(@NonNull Parcel in, @Nullable ClassLoader loader) {
             super(in, loader);
             openDrawerGravity = in.readInt();
             lockModeLeft = in.readInt();
@@ -2010,7 +2010,7 @@ public class DrawerLayout extends ViewGroup {
             lockModeEnd = in.readInt();
         }
 
-        public SavedState(Parcelable superState) {
+        public SavedState(@NonNull Parcelable superState) {
             super(superState);
         }
 
@@ -2218,7 +2218,7 @@ public class DrawerLayout extends ViewGroup {
         boolean isPeeking;
         int openState;
 
-        public LayoutParams(Context c, AttributeSet attrs) {
+        public LayoutParams(@NonNull Context c, @Nullable AttributeSet attrs) {
             super(c, attrs);
 
             final TypedArray a = c.obtainStyledAttributes(attrs, LAYOUT_ATTRS);
@@ -2235,16 +2235,16 @@ public class DrawerLayout extends ViewGroup {
             this.gravity = gravity;
         }
 
-        public LayoutParams(LayoutParams source) {
+        public LayoutParams(@NonNull LayoutParams source) {
             super(source);
             this.gravity = source.gravity;
         }
 
-        public LayoutParams(ViewGroup.LayoutParams source) {
+        public LayoutParams(@NonNull ViewGroup.LayoutParams source) {
             super(source);
         }
 
-        public LayoutParams(MarginLayoutParams source) {
+        public LayoutParams(@NonNull ViewGroup.MarginLayoutParams source) {
             super(source);
         }
     }

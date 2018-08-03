@@ -22,12 +22,12 @@ import android.view.animation.Interpolator;
  * An {@link Interpolator} that uses a lookup table to compute an interpolation based on a
  * given input.
  */
-public abstract class LookupTableInterpolator implements Interpolator {
+abstract class LookupTableInterpolator implements Interpolator {
 
     private final float[] mValues;
     private final float mStepSize;
 
-    public LookupTableInterpolator(float[] values) {
+    protected LookupTableInterpolator(float[] values) {
         mValues = values;
         mStepSize = 1f / (mValues.length - 1);
     }

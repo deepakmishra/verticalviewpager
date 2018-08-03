@@ -25,18 +25,18 @@ import android.widget.Filter;
  * delegate methods to run the queries and convert the results into String
  * that can be used by auto-completion widgets.
  */
-public class CursorFilter extends Filter {
+class CursorFilter extends Filter {
 
     CursorFilterClient mClient;
 
-    public interface CursorFilterClient {
+    interface CursorFilterClient {
         CharSequence convertToString(Cursor cursor);
         Cursor runQueryOnBackgroundThread(CharSequence constraint);
         Cursor getCursor();
         void changeCursor(Cursor cursor);
     }
 
-    public CursorFilter(CursorFilterClient client) {
+    CursorFilter(CursorFilterClient client) {
         mClient = client;
     }
 

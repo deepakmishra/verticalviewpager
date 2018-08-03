@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
 import android.support.v4.content.ContextCompat;
@@ -316,7 +317,7 @@ public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingPare
      *
      * @param context
      */
-    public SwipeRefreshLayout(Context context) {
+    public SwipeRefreshLayout(@NonNull Context context) {
         this(context, null);
     }
 
@@ -326,7 +327,7 @@ public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingPare
      * @param context
      * @param attrs
      */
-    public SwipeRefreshLayout(Context context, AttributeSet attrs) {
+    public SwipeRefreshLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
@@ -341,7 +342,7 @@ public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingPare
         mCircleDiameter = (int) (CIRCLE_DIAMETER * metrics.density);
 
         createProgressView();
-        ViewCompat.setChildrenDrawingOrderEnabled(this, true);
+        setChildrenDrawingOrderEnabled(true);
         // the absolute offset has to take into account that the circle starts at an offset
         mSpinnerOffsetEnd = (int) (DEFAULT_CIRCLE_TARGET * metrics.density);
         mTotalDragDistance = mSpinnerOffsetEnd;
@@ -387,7 +388,7 @@ public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingPare
      * Set the listener to be notified when a refresh is triggered via the swipe
      * gesture.
      */
-    public void setOnRefreshListener(OnRefreshListener listener) {
+    public void setOnRefreshListener(@Nullable OnRefreshListener listener) {
         mListener = listener;
     }
 
@@ -417,12 +418,7 @@ public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingPare
 
     private void startScaleUpAnimation(AnimationListener listener) {
         mCircleView.setVisibility(View.VISIBLE);
-        if (android.os.Build.VERSION.SDK_INT >= 11) {
-            // Pre API 11, alpha is used in place of scale up to show the
-            // progress circle appearing.
-            // Don't adjust the alpha during appearance otherwise.
-            mProgress.setAlpha(MAX_ALPHA);
-        }
+        mProgress.setAlpha(MAX_ALPHA);
         mScaleAnimation = new Animation() {
             @Override
             public void applyTransformation(float interpolatedTime, Transformation t) {
@@ -1189,6 +1185,6 @@ public class SwipeRefreshLayout extends ViewGroup implements NestedScrollingPare
          *
          * @return Whether it is possible for the child view of parent layout to scroll up.
          */
-        boolean canChildScrollUp(SwipeRefreshLayout parent, @Nullable View child);
+        boolean canChildScrollUp(@NonNull SwipeRefreshLayout parent, @Nullable View child);
     }
 }

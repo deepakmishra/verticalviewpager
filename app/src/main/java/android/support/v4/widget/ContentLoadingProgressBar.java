@@ -17,6 +17,8 @@
 package android.support.v4.widget;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -61,11 +63,11 @@ public class ContentLoadingProgressBar extends ProgressBar {
         }
     };
 
-    public ContentLoadingProgressBar(Context context) {
+    public ContentLoadingProgressBar(@NonNull Context context) {
         this(context, null);
     }
 
-    public ContentLoadingProgressBar(Context context, AttributeSet attrs) {
+    public ContentLoadingProgressBar(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs, 0);
     }
 
@@ -91,9 +93,10 @@ public class ContentLoadingProgressBar extends ProgressBar {
      * hidden until it has been shown for at least a minimum show time. If the
      * progress view was not yet visible, cancels showing the progress view.
      */
-    public void hide() {
+    public synchronized void hide() {
         mDismissed = true;
         removeCallbacks(mDelayedShow);
+        mPostedShow = false;
         long diff = System.currentTimeMillis() - mStartTime;
         if (diff >= MIN_SHOW_TIME || mStartTime == -1) {
             // The progress spinner has been shown long enough
@@ -115,11 +118,12 @@ public class ContentLoadingProgressBar extends ProgressBar {
      * Show the progress view after waiting for a minimum delay. If
      * during that time, hide() is called, the view is never made visible.
      */
-    public void show() {
+    public synchronized void show() {
         // Reset the start time.
         mStartTime = -1;
         mDismissed = false;
         removeCallbacks(mDelayedHide);
+        mPostedHide = false;
         if (!mPostedShow) {
             postDelayed(mDelayedShow, MIN_DELAY);
             mPostedShow = true;

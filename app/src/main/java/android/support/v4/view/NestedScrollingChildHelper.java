@@ -37,8 +37,8 @@ import static android.support.v4.view.ViewCompat.TYPE_TOUCH;
  * method implementation. This implements the standard framework policy for nested scrolling.</p>
  *
  * <p>Views invoking nested scrolling functionality should always do so from the relevant
- * {@link ViewCompat}, {@link ViewGroupCompat} or
- * {@link ViewParentCompat} compatibility
+ * {@link android.support.v4.view.ViewCompat}, {@link android.support.v4.view.ViewGroupCompat} or
+ * {@link android.support.v4.view.ViewParentCompat} compatibility
  * shim static methods. This ensures interoperability with nested scrolling views on Android
  * 5.0 Lollipop and newer.</p>
  */
@@ -60,7 +60,7 @@ public class NestedScrollingChildHelper {
      * Enable nested scrolling.
      *
      * <p>This is a delegate method. Call it from your {@link View View} subclass
-     * method/{@link NestedScrollingChild} interface method with the same
+     * method/{@link android.support.v4.view.NestedScrollingChild} interface method with the same
      * signature to implement the standard policy.</p>
      *
      * @param enabled true to enable nested scrolling dispatch from this view, false otherwise
@@ -76,7 +76,7 @@ public class NestedScrollingChildHelper {
      * Check if nested scrolling is enabled for this view.
      *
      * <p>This is a delegate method. Call it from your {@link View View} subclass
-     * method/{@link NestedScrollingChild} interface method with the same
+     * method/{@link android.support.v4.view.NestedScrollingChild} interface method with the same
      * signature to implement the standard policy.</p>
      *
      * @return true if nested scrolling is enabled for this view
@@ -90,7 +90,7 @@ public class NestedScrollingChildHelper {
      * a nested scroll in progress with the type of touch.
      *
      * <p>This is a delegate method. Call it from your {@link View View} subclass
-     * method/{@link NestedScrollingChild} interface method with the same
+     * method/{@link android.support.v4.view.NestedScrollingChild} interface method with the same
      * signature to implement the standard policy.</p>
      *
      * @return true if this view has a nested scrolling parent, false otherwise
@@ -104,7 +104,7 @@ public class NestedScrollingChildHelper {
      * a nested scroll in progress with the given type.
      *
      * <p>This is a delegate method. Call it from your {@link View View} subclass
-     * method/{@link NestedScrollingChild} interface method with the same
+     * method/{@link android.support.v4.view.NestedScrollingChild} interface method with the same
      * signature to implement the standard policy.</p>
      *
      * @return true if this view has a nested scrolling parent, false otherwise
@@ -117,11 +117,11 @@ public class NestedScrollingChildHelper {
      * Start a new nested scroll for this view.
      *
      * <p>This is a delegate method. Call it from your {@link View View} subclass
-     * method/{@link NestedScrollingChild} interface method with the same
+     * method/{@link android.support.v4.view.NestedScrollingChild} interface method with the same
      * signature to implement the standard policy.</p>
      *
      * @param axes Supported nested scroll axes.
-     *             See {@link NestedScrollingChild#startNestedScroll(int)}.
+     *             See {@link android.support.v4.view.NestedScrollingChild#startNestedScroll(int)}.
      * @return true if a cooperating parent view was found and nested scrolling started successfully
      */
     public boolean startNestedScroll(@ScrollAxis int axes) {
@@ -132,11 +132,11 @@ public class NestedScrollingChildHelper {
      * Start a new nested scroll for this view.
      *
      * <p>This is a delegate method. Call it from your {@link View View} subclass
-     * method/{@link NestedScrollingChild2} interface method with the same
+     * method/{@link android.support.v4.view.NestedScrollingChild2} interface method with the same
      * signature to implement the standard policy.</p>
      *
      * @param axes Supported nested scroll axes.
-     *             See {@link NestedScrollingChild2#startNestedScroll(int,
+     *             See {@link android.support.v4.view.NestedScrollingChild2#startNestedScroll(int,
      *             int)}.
      * @return true if a cooperating parent view was found and nested scrolling started successfully
      */
@@ -167,7 +167,7 @@ public class NestedScrollingChildHelper {
      * Stop a nested scroll in progress.
      *
      * <p>This is a delegate method. Call it from your {@link View View} subclass
-     * method/{@link NestedScrollingChild} interface method with the same
+     * method/{@link android.support.v4.view.NestedScrollingChild} interface method with the same
      * signature to implement the standard policy.</p>
      */
     public void stopNestedScroll() {
@@ -178,7 +178,7 @@ public class NestedScrollingChildHelper {
      * Stop a nested scroll in progress.
      *
      * <p>This is a delegate method. Call it from your {@link View View} subclass
-     * method/{@link NestedScrollingChild2} interface method with the same
+     * method/{@link android.support.v4.view.NestedScrollingChild2} interface method with the same
      * signature to implement the standard policy.</p>
      */
     public void stopNestedScroll(@NestedScrollType int type) {
@@ -193,7 +193,7 @@ public class NestedScrollingChildHelper {
      * Dispatch one step of a nested scrolling operation to the current nested scrolling parent.
      *
      * <p>This is a delegate method. Call it from your {@link View View} subclass
-     * method/{@link NestedScrollingChild} interface method with the same
+     * method/{@link android.support.v4.view.NestedScrollingChild} interface method with the same
      * signature to implement the standard policy.</p>
      *
      * @return true if the parent consumed any of the nested scroll
@@ -208,7 +208,7 @@ public class NestedScrollingChildHelper {
      * Dispatch one step of a nested scrolling operation to the current nested scrolling parent.
      *
      * <p>This is a delegate method. Call it from your {@link View View} subclass
-     * method/{@link NestedScrollingChild2} interface method with the same
+     * method/{@link android.support.v4.view.NestedScrollingChild2} interface method with the same
      * signature to implement the standard policy.</p>
      *
      * @return true if the parent consumed any of the nested scroll
@@ -253,7 +253,7 @@ public class NestedScrollingChildHelper {
      * Dispatch one step of a nested pre-scrolling operation to the current nested scrolling parent.
      *
      * <p>This is a delegate method. Call it from your {@link View View} subclass
-     * method/{@link NestedScrollingChild} interface method with the same
+     * method/{@link android.support.v4.view.NestedScrollingChild} interface method with the same
      * signature to implement the standard policy.</p>
      *
      * @return true if the parent consumed any of the nested scroll
@@ -267,7 +267,7 @@ public class NestedScrollingChildHelper {
      * Dispatch one step of a nested pre-scrolling operation to the current nested scrolling parent.
      *
      * <p>This is a delegate method. Call it from your {@link View View} subclass
-     * method/{@link NestedScrollingChild2} interface method with the same
+     * method/{@link android.support.v4.view.NestedScrollingChild2} interface method with the same
      * signature to implement the standard policy.</p>
      *
      * @return true if the parent consumed any of the nested scroll
@@ -317,7 +317,7 @@ public class NestedScrollingChildHelper {
      * Dispatch a nested fling operation to the current nested scrolling parent.
      *
      * <p>This is a delegate method. Call it from your {@link View View} subclass
-     * method/{@link NestedScrollingChild} interface method with the same
+     * method/{@link android.support.v4.view.NestedScrollingChild} interface method with the same
      * signature to implement the standard policy.</p>
      *
      * @return true if the parent consumed the nested fling
@@ -337,7 +337,7 @@ public class NestedScrollingChildHelper {
      * Dispatch a nested pre-fling operation to the current nested scrolling parent.
      *
      * <p>This is a delegate method. Call it from your {@link View View} subclass
-     * method/{@link NestedScrollingChild} interface method with the same
+     * method/{@link android.support.v4.view.NestedScrollingChild} interface method with the same
      * signature to implement the standard policy.</p>
      *
      * @return true if the parent consumed the nested fling
@@ -358,7 +358,7 @@ public class NestedScrollingChildHelper {
      * <code>NestedScrollingChildHelper</code> when detached from a window.
      *
      * <p>This is a delegate method. Call it from your {@link View View} subclass
-     * method/{@link NestedScrollingChild} interface method with the same
+     * method/{@link android.support.v4.view.NestedScrollingChild} interface method with the same
      * signature to implement the standard policy.</p>
      */
     public void onDetachedFromWindow() {
@@ -369,7 +369,7 @@ public class NestedScrollingChildHelper {
      * Called when a nested scrolling child stops its current nested scroll operation.
      *
      * <p>This is a delegate method. Call it from your {@link View View} subclass
-     * method/{@link NestedScrollingChild} interface method with the same
+     * method/{@link android.support.v4.view.NestedScrollingChild} interface method with the same
      * signature to implement the standard policy.</p>
      *
      * @param child Child view stopping its nested scroll. This may not be a direct child view.
