@@ -41,7 +41,7 @@ In the [VerticalViewPager](https://github.com/deepakmishra/verticalviewpager/blo
 
 ## Contributors
 Deepak Mishra
-* deepak@awesummly.com
+* deepakmishra117@gmail.com
 
 Denver Braganza
 * denver@awesummly.com
